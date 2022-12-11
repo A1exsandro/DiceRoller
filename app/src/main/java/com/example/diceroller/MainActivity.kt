@@ -13,11 +13,29 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener { rollDice() }
+
+        val countUpButton: Button = findViewById(R.id.countUp_button)
+        countUpButton.setOnClickListener { countUp() }
     }
 
     private fun rollDice() {
         val resultText: TextView = findViewById(R.id.result_text)
-        val randomInt = (1..100).random()
+        val randomInt = (1..6).random()
         resultText.text = randomInt.toString()
+    }
+
+    private fun countUp() {
+        val resultText: TextView = findViewById(R.id.result_text)
+
+        if (resultText.text == "Hello World!") {
+            resultText.text = "1"
+        } else {
+            var resultInt = resultText.text.toString().toInt()
+
+            if (resultInt < 6) {
+                resultInt++
+                resultText.text = resultInt.toString()
+            }
+        }
     }
 }
